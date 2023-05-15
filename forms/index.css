@@ -1,0 +1,12 @@
+#message{
+    display: none;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+}
+
+input{
+    transition-delay:1000ms;
+}
