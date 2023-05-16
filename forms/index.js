@@ -12,7 +12,7 @@ const namePattern =/^[A-Za-z]+$/
 const emailPattern = /^[A-Za-z0-9]+@[a-z]{2,5}.(com|in)$/
 const agePattern = /^[1-9]$|^[1-9][0-9]$|^(100)$/;
 const cityPattern = /^[A-Za-z]+$/
-const phonePattern = /^(0)|(\+91)$|^([6-9]{1})([0-9]{9})$/
+const phonePattern = /^((0)|(+91))|(([1-9]{1})[0-9]{9})$/
 
 const messageDisplay = (messageValue) =>{
     message.style.display = "block";
