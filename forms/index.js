@@ -12,7 +12,7 @@ const namePattern =/^[A-Za-z]+$/
 const emailPattern = /^[A-Za-z0-9]+@[a-z]{2,5}.(com|in)$/
 const agePattern = /^[1-9]$|^[1-9][0-9]$|^(100)$/;
 const cityPattern = /^[A-Za-z]+$/
-const phonePattern = /^((0)|(+91))|(([1-9]{1})[0-9]{9})$/
+const phonePattern = /^((0)|(\+91))|(([6-9]{1})([0-9]{9}))$/
 
 const messageDisplay = (messageValue) =>{
     message.style.display = "block";
@@ -42,17 +42,18 @@ lastName.addEventListener("keyup" , () =>{
 //one event for foucs out
 email.addEventListener("focusout" , (event) =>{
         const regexMatch = emailPattern.test(email.value);
-        console.log(email.value)
-        if(!regexMatch){
-            email.value = "";
-            
-    }
+        if(email.value){
+            if(!regexMatch){
+                email.value = "";
+                messageDisplay("Please Enter a valid Email");
+            }   
+        }
+       
 })
 //one envent for enter key
 email.addEventListener("keypress" , (event) =>{
     if(event.key === "Enter"){
         const regexMatch = emailPattern.test(email.value);
-        console.log(email.value)
         if(!regexMatch){
             email.value = "";
             messageDisplay("Please Enter a valid Email");
@@ -92,7 +93,12 @@ events.forEach((eve) =>{
         if(event.key === "Enter"){
             ageMatch();
         }
-        if(eve === 'focusout') ageMatch();
+        if(age.value){
+            if(eve === 'focusout') {
+                ageMatch()
+            };
+        }
+      
     } )
 })
 
@@ -110,7 +116,29 @@ events.forEach((eve) =>{
         if(event.key === "Enter"){
             cityMatch();
         }
-        if(eve === 'focusout') cityMatch();
+        if(city.value){
+            if(eve === 'focusout') {
+                cityMatch()
+            };
+        }
     })
 })
 
+const phoneMatch = () =>{
+    const regexMatch = phonePattern.test(phoneNumber.value);
+    if(!regexMatch){
+        messageDisplay("Please enter a valid phone number");
+        phoneNumber.value = "";
+    }
+}
+
+events.forEach((eve) =>{
+    phoneNumber.addEventListener(eve , (event) =>{
+        if(event.key === "Enter") phoneMatch();
+        if(phoneNumber.value){
+            if(eve === 'focusout') {
+                phoneMatch()
+            };
+        }
+    })
+})
