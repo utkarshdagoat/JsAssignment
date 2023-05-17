@@ -17,3 +17,7 @@ form{
 .button{
     max-width: 6rem;
 }
+
+#successMessage{
+    display: none;
+}
