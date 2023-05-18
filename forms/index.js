@@ -8,7 +8,7 @@ const age = document.getElementById('Age');
 const city = document.getElementById('city');
 const phoneNumber = document.getElementById('phone');
 
-const namePattern =/^[A-Za-z]+$/
+const namePattern =/^[A-Za-z]*$/
 const emailPattern = /^[A-Za-z0-9]+@[a-z]{2,5}.(com|in)$/
 const agePattern = /^[1-9]$|^[1-9][0-9]$|^(100)$/;
 const cityPattern = /^[A-Za-z]+$/
@@ -24,9 +24,9 @@ const onNameNotMatch = (ele) =>{
     messageDisplay('The name should only be character and should be less than 15 characters');
 }
 
-firstName.addEventListener("keyup" , () =>{
+firstName.addEventListener("keyup" , () =>{ 
     const regexMatch = namePattern.test(firstName.value);
-
+    
     if(!regexMatch || firstName.value.length > 15){
        onNameNotMatch(firstName);
     }
